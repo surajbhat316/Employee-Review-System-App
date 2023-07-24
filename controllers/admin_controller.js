@@ -1,27 +1,4 @@
 const User = require('../models/user');
-
-
-
-
-
-module.exports.signin = function(req,res){
-
-    if(req.isAuthenticated()){
-        return res.redirect('/user/profile');
-    }
-
-    return res.render('user_signin');
-}
-
-
-module.exports.signup = function(req,res){
-
-    if(req.isAuthenticated()){
-        return res.redirect('/user/profile');
-    }
-    return res.render('user_signup');
-}
-
 module.exports.create = async function(req,res){
     if(req.body.password != req.body.confirm_password){
         return res.redirect('back');
@@ -42,7 +19,7 @@ module.exports.create = async function(req,res){
                 isAdmin: req.body.isAdmin
             })
 
-            return res.redirect('/user/sign-in');
+            return res.redirect('back');
         }
         else{
             console.log("User Already exists with this email id");
@@ -54,30 +31,4 @@ module.exports.create = async function(req,res){
         return res.redirect('back');
     }
     
-}
-
-module.exports.createSession = async function(req,res){
-    return res.redirect('/');
-}
-
-
-module.exports.showProfile = async function(req,res){
-
-    return res.render('user_profile');
-}
-
-module.exports.destroySession = async function(req,res,next){
-    req.logout(function(err){
-        if(err){
-            console.log("Error "+ err);
-            return next(err);
-        }
-        return res.redirect('/');
-    });
-    
-}
-
-
-module.exports.adminView = function(req, res){
-    return res.render('adminView');
 }

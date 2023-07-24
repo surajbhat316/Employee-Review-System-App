@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/css/adminView.css">
+
+<div class="top-container">
+    <div>
+        <a style="text-decoration: none;" href="#">
+            <div id="add-user" class="add-user">
+                <div class="">
+                    Add User
+                </div>
+            </div>
+        </a>
+    </div>
+
+    
+    <div id="userCreationForm" class="form-container">
+        <form action="/user/admin/create" method="post">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-control" type="text" name="name" id="name" placeholder="Users Name" required>
+        
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" name="email" id="email" placeholder="Users Email" required>
+        
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" type="password" name="password" id="password" placeholder="Create a password" required>
+    
+            <label class="form-label" for="confirm_password">Confirm Password</label>
+            <input class="form-control" type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+    
+            <label class=" my-1 form-label" for="isAdmin">isAdmin</label>
+            <input type="checkbox" name="isAdmin" id="isAdmin"><br>
+            <button type="submit" class="btn btn-primary m-2">Create</button>
+        </form>
+    </div>
+</div>
+
+
+<div class="user-container">
+    <div class="user">
+        <p>User name : Avineet</p>
+        <p>User Email : abcd@example.com</p>
+        <p>Is Admin : true</p>
+        <div class="btn-container">
+            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-secondary">Remove</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/adminView.js"></script>

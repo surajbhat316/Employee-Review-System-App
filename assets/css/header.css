@@ -4,11 +4,11 @@
 .heading p{
     margin: 0rem 1rem;
 }
-a {
+.heading a {
     color: white;
     text-decoration: none;
 }
-a:hover{
+.heading a:hover{
     text-decoration: underline;
 }
 header{

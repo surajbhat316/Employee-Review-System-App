@@ -3,7 +3,12 @@
     <div class="main-container">
         <div class="heading">
             <p><b>Employee Review System</b></p>
-            <p><a href="/">Home</a></p>
+            <%if(locals.user){%>
+                <p><a href="/">Home</a></p>
+                <%if(locals.user.isAdmin){%>
+                    <a href="/user/adminView">Admin view</a>    
+                <%}%>
+            <%}%>
         </div>
         <div class="links-container">
             <div class="links">
@@ -14,10 +19,7 @@
                     <a href="/user/sign-in">Sign-in</a>
                     <a href="/user/sign-up">Sign-up</a>
                 <%}%>
-                
             </div>
         </div>
-        
-
     </div>
 </header>

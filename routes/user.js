@@ -6,7 +6,7 @@ const usersController = require('../controllers/users_controller');
 
 
 
-
+router.use('/admin', require('./admin'));
 router.get('/sign-in', usersController.signin);
 router.get('/sign-up', usersController.signup);
 router.get('/sign-out', usersController.destroySession);
@@ -19,6 +19,8 @@ router.post('/create-session',passport.authenticate(
 ), usersController.createSession);
 
 router.get('/profile',passport.checkAuthentication ,usersController.showProfile);
+
+router.get('/adminView',passport.checkAuthentication ,usersController.adminView);
 
 
 
