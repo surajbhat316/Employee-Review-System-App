@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
+const homeController = require('../controllers/home_controller');
 
 
-router.get('/', function(req,res){
-    return res.render('home',{
-        data: "Hello"
-    })
-});
+
+router.use('/user', require('./user'));
+
+router.get('/', homeController.displayHomePage);
 
 
 

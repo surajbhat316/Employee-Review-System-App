@@ -1,4 +1,16 @@
-
+.heading{
+    display: flex;
+}
+.heading p{
+    margin: 0rem 1rem;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
 header{
     background-color: blue;
     color: white;

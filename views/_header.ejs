@@ -3,13 +3,21 @@
     <div class="main-container">
         <div class="heading">
             <p><b>Employee Review System</b></p>
+            <p><a href="/">Home</a></p>
         </div>
         <div class="links-container">
             <div class="links">
-                <a href="#">Sign-in</a>
-                <a href="#">Sign-up</a>
+                <%if(locals.user){%>
+                    <span><%= user.name%></span>
+                    <a href="/user/sign-out">Sign Out</a>
+                <%}else{%>
+                    <a href="/user/sign-in">Sign-in</a>
+                    <a href="/user/sign-up">Sign-up</a>
+                <%}%>
+                
             </div>
         </div>
         
+
     </div>
 </header>

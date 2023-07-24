@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="/css/user_signup.css">
+<div class="form-container">
+    <form action="/user/create" method="post">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-control" type="text" name="name" id="name" placeholder="Your Name" required>
+    
+        <label class="form-label" for="email">Email</label>
+        <input class="form-control" type="email" name="email" id="email" placeholder="Your Email" required>
+    
+        <label class="form-label" for="password">Password</label>
+        <input class="form-control" type="password" name="password" id="password" placeholder="Create a password" required>
+
+        <label class="form-label" for="confirm_password">Confirm Password</label>
+        <input class="form-control" type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+
+        <label class=" my-1 form-label" for="isAdmin">isAdmin</label>
+        <input type="checkbox" name="isAdmin" id="isAdmin"><br>
+        <button type="submit" class="btn btn-primary m-2">Sign In</button>
+    </form>
+</div>
