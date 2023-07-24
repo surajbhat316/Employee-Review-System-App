@@ -63,3 +63,10 @@ body{
     box-shadow: 0px 0px 19px 0px lightgrey;
     border-radius: 1rem;
 }
+#userUpdateForm{
+    width: fit-content;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 0px 0px 19px 0px lightgrey;
+    border-radius: 1rem;
+}

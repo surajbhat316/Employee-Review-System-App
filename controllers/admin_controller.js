@@ -35,7 +35,7 @@ module.exports.create = async function(req,res){
 
 module.exports.searchByEmail = async function(req,res){
     try {
-        let user = await User.findOne({email : req.body.email});
+        let user = await User.findOne({email : req.body.user_email});
         
         if(user){
             if(req.xhr){
@@ -59,6 +59,33 @@ module.exports.searchByEmail = async function(req,res){
             }
             return res.redirect('back');
         }
+    } catch (error) {
+        return res.redirect('back');
+    }
+}
+
+module.exports.update = async function (req, res){
+    if(req.body.isAdmin == "on"){
+        req.body.isAdmin = true;
+    }
+    if(req.body.isAdmin == undefined){
+        req.body.isAdmin = false;
+    }
+
+    try {
+        let user = await User.findOne({_id : req.params.id});
+        if(user){
+            user.email = req.body.email;
+            user.name = req.body.name;
+            user.isAdmin = req.body.isAdmin;
+            user.save();
+            return res.redirect('back');
+        }
+        else{
+            console.log("User not found");
+            return res.redirect('back');
+        }
+        
     } catch (error) {
         return res.redirect('back');
     }

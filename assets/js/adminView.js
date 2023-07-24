@@ -42,17 +42,23 @@
         }else{
             
             for(let user of data.users){
-                htmlContent+=`<div class="user">
-                                <p>User name : ${user.name}</p>
-                                <p>User Email : ${user.email}</p>
-                                <p>Is Admin : ${user.isAdmin}</p>
-                                <div class="btn-container">
-                                    <button class="btn btn-primary">Edit</button>
-                                    <button class="btn btn-secondary">Remove</button>
-                                </div>
-                            </div>`;
+                htmlContent+=`
+                            <form id="userUpdateForm" action="/user/admin/update/${user._id}" method="post">
+                                <label class="form-label" for="name">Name</label>
+                                <input class="form-control" type="text" name="name" id="name" value="${user.name}">
+                            
+                                <label class="form-label" for="email">Email</label>
+                                <input class="form-control" type="text" name="email" id="userEmail" value="${user.email}">
+
+                                <label class="form-label" for="isAdmin">IsAdmin</label>
+                                <input type="checkbox" name="isAdmin" id="isAdmin" ${user.isAdmin ? "checked" :""}><br>
+                            
+                                <button class="btn btn-primary my-2" type="submit">Update</button>
+                            </form>
+                            `;
             }
         }
         dataContainer.innerHTML = htmlContent;
     }
+    
 }
