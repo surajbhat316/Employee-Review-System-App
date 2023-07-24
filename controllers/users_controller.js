@@ -79,7 +79,12 @@ module.exports.destroySession = async function(req,res,next){
 
 
 module.exports.adminView = function(req, res){
-    return res.render('adminView',{
-        users : []
-    });
+
+    if(req.user.isAdmin){
+        return res.render('adminView',{
+            users : []
+        });
+    }
+    return res.redirect('/');
+    
 }
