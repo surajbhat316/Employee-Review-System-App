@@ -32,3 +32,34 @@ module.exports.create = async function(req,res){
     }
     
 }
+
+module.exports.searchByEmail = async function(req,res){
+    try {
+        let user = await User.findOne({email : req.body.email});
+        
+        if(user){
+            if(req.xhr){
+                return res.status(200).json({
+                    data:{
+                        users: [user]
+                    }
+                });
+            }
+            return res.render('adminView', {
+                users : [user]
+            });
+        }
+        else{
+            if(req.xhr){
+                return res.status(200).json({
+                    data:{
+                        users: []
+                    }
+                });
+            }
+            return res.redirect('back');
+        }
+    } catch (error) {
+        return res.redirect('back');
+    }
+}

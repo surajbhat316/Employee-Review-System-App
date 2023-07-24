@@ -34,16 +34,31 @@
 </div>
 
 
-<div class="user-container">
-    <div class="user">
-        <p>User name : Avineet</p>
-        <p>User Email : abcd@example.com</p>
-        <p>Is Admin : true</p>
-        <div class="btn-container">
-            <button class="btn btn-primary">Edit</button>
-            <button class="btn btn-secondary">Remove</button>
-        </div>
-    </div>
+<div class="search-container">
+    <form id="searchForm" action="/user/admin/searchByEmail" method="post">
+        <label class="form-label" for="email">Search By Email</label>
+        <input class="form-control" type="email" name="email" id="email" placeholder="Enter User Email" required>
+    
+        <button class="btn btn-primary my-2" type="submit">Search</button>
+    </form>
+
 </div>
+
+
+<div id="user-container" class="user-container">
+    <%for(let user of users){%>
+        <div class="user">
+            <p>User name : <%=user.name%></p>
+            <p>User Email : <%=user.email%></p>
+            <p>Is Admin : <%=user.isAdmin%></p>
+            <div class="btn-container">
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-secondary">Remove</button>
+            </div>
+        </div>       
+    <%}%>
+
+</div>
+
 
 <script src="/js/adminView.js"></script>
