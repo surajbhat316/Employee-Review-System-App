@@ -23,7 +23,6 @@ router.post('/create-session',passport.authenticate(
 ), usersController.createSession);
 
 router.get('/profile',passport.checkAuthentication ,usersController.showProfile);
-
 router.get('/adminView',passport.checkAuthentication ,usersController.adminView);
 
 

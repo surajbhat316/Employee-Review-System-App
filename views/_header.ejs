@@ -5,6 +5,7 @@
             <p><b>Employee Review System</b></p>
             <%if(locals.user){%>
                 <p><a href="/">Home</a></p>
+                <p><a href="/reviews">Reviews</a></p>
                 <%if(locals.user.isAdmin){%>
                     <a href="/user/adminView">Admin view</a>    
                 <%}%>

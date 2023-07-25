@@ -1,0 +1,14 @@
+.review-main-container{
+    display: flex;
+    flex-direction: row;
+}
+.review-container{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: auto;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 0px 0px 19px 0px lightgrey;
+    border-radius: 1rem;
+}
