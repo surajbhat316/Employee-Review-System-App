@@ -7,6 +7,10 @@ const usersController = require('../controllers/users_controller');
 
 
 router.use('/admin', require('./admin'));
+
+// To Check if the email of the user is valid
+router.get('/checkEmail/:email',usersController.checkIfUserExists);
+
 router.get('/sign-in', usersController.signin);
 router.get('/sign-up', usersController.signup);
 router.get('/sign-out', usersController.destroySession);

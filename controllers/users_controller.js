@@ -3,13 +3,42 @@ const User = require('../models/user');
 
 
 
+// For the xhr request to check the valid email address
+module.exports.checkIfUserExists = async function(req,res){
+    try {
+        let user = await User.findOne({email : req.params.email});
+        if(user){
+            if(req.xhr){
+                return res.status(200).json({
+                    data: {
+                        user: [user]
+                    }
+                });
+            }
+            return res.redirect('back');
+        }
+        else{
+            if(req.xhr){
+                return res.status(200).json({
+                    data: {
+                        user: undefined
+                    }
+                });
+            }
+            return res.redirect('back');
+        }
+        
+    } catch (error) {
+        console.log("Error in finding the user ",error);
+        return res.redirect('back');
+    }
+}
 
 module.exports.signin = function(req,res){
 
     if(req.isAuthenticated()){
         return res.redirect('/user/profile');
     }
-
     return res.render('user_signin');
 }
 

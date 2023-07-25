@@ -107,3 +107,4 @@ module.exports.delete = async function(req, res) {
         return res.redirect('/user/adminView');
     }
 }
+

@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="/css/review_form.css">
+<div class="review-form-container">
+    <form action="/user/admin/review/create" method="post">
+        <label class="form-label" for="title">Title</label>
+        <input class="form-control" type="text" name="title" id="title" placeholder="Title of the Review" required>
+    
+        <div class="inner-form-element">
+            <label class="form-label" for="email">Review User</label>
+            <div class="inputcontainer">
+                <input id="user_email" class="form-control" type="email" name="email" id="email" placeholder="User Email" required>
+                <button id="check_user" class="btn btn-secondary" type="button">Check User</button>
+            </div>
+            <span id="message"></span>
+        </div>
+
+        <button id="sunmit_button" type="submit" class="btn btn-primary m-2" disabled>Create</button>
+    </form>
+</div>
+
+<script src="/js/review_form.js"></script>
