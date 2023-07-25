@@ -90,3 +90,20 @@ module.exports.update = async function (req, res){
         return res.redirect('back');
     }
 }
+
+
+module.exports.delete = async function(req, res) {
+    try {
+        let user = await User.findOne({_id : req.params.id});
+        if(user){
+            await User.findByIdAndRemove({_id : req.params.id});
+            return res.redirect('/user/adminView');
+        }
+        else{
+            console.log("User not found");
+            return res.redirect('/user/adminView');
+        }
+    } catch (error) {
+        return res.redirect('/user/adminView');
+    }
+}

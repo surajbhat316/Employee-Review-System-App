@@ -54,6 +54,7 @@
                                 <input type="checkbox" name="isAdmin" id="isAdmin" ${user.isAdmin ? "checked" :""}><br>
                             
                                 <button class="btn btn-primary my-2" type="submit">Update</button>
+                                <a href="/user/admin/delete/${user._id}"><button class="btn btn-secondary" type="button" >Delete</button></a>
                             </form>
                             `;
             }
