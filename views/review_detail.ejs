@@ -1,0 +1,28 @@
+<h2>Review Drtails</h2>
+
+<p>Title : <%= review.title%></p>
+<p>Created By : <%= review.created_by_user.name%></p>
+
+
+<h2>Comments</h2>
+
+<%if(review.reviewed_user._id != locals.user.id){%>
+<form action="/reviews/detail/<%=review._id%>/addComment" method="post">
+    <textarea name="comment" id="comment" cols="30" rows="2" placeholder="Type a Comment" required></textarea><br>
+    <button class="btn btn-primary">Add Comment</button>
+</form>
+<%}%>
+<div class="comments-section">
+    <%if(comments.length == 0){%>
+        <p>No Comments as of now</p>
+    <%}else{%>
+        <div class="comment-container">
+            <%for(let comment of comments){%>
+                <p><%= comment.content%></p>
+                <p>By : <%= comment.user_id.name%></p>
+            <%}%>
+        </div>
+    <%}%>
+    
+</div>
+
