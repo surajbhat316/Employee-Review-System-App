@@ -19,6 +19,7 @@
             <form action="/reviews/addUser/review/<%= review._id%>" method="post">
                 <div class="check-email-input">
                     <input type="hidden" name="hiddenInp" id="hiddenInp" value="<%=review.reviewed_user.email%>" disabled>
+                    <input type="hidden" name="hiddenInpCreatedUser" id="hiddenInpCreatedUser" value="<%=review.created_by_user.email%>" disabled>
                     <input id="user_email" class="form-control" type="email" name="email" id="email" placeholder="User Email" required>
                     <button id="check_user_btn" class="btn btn-secondary" type="button">Check User</button>
                 </div>

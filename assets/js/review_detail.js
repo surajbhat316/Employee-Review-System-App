@@ -16,6 +16,7 @@
     let submitButton = document.getElementById("sunmit_button");
     let checkUserBtn = document.getElementById("check_user_btn");
     let reviewed_user_email = document.getElementById("hiddenInp").value;
+    let created_by_user_email = document.getElementById("hiddenInpCreatedUser").value;
     let dataContainer = document.getElementById('message');
     
     checkUserBtn.addEventListener('click',function(e){
@@ -23,6 +24,10 @@
         let email = document.getElementById('user_email').value;
         if(email == reviewed_user_email){
             dataContainer.innerHTML = '<p>Can not enter email of the reviewed user</p>';
+            return;
+        }
+        if(email == created_by_user_email){
+            dataContainer.innerHTML = '<p>Can not enter email of the user who created the review</p>';
             return;
         }
         $.ajax({

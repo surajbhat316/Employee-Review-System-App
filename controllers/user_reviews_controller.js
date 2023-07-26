@@ -86,11 +86,11 @@ module.exports.addComment = async function(req,res){
 // Add an associated user
 module.exports.addAssociatedUser = async function(req,res){
     try {
-        console.log(req.params);
-        console.log(req.user);
-        console.log(req.body);
+        // console.log(req.params);
+        // console.log(req.user);
+        // console.log(req.body);
         let user = await User.findOne({email : req.body.email});
-        console.log(user);
+        // console.log(user);
         if(!user){
             console.log("User not found for the given email");
             return res.redirect('back');
