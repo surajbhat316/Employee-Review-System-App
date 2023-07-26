@@ -18,7 +18,7 @@
 }
 .outer-link{
     width: 200px;
-    height: 200px;
+    height: 100px;
     text-decoration: none;
 }
 .add-a-user{
@@ -26,7 +26,7 @@
     justify-content: center;
     align-items: center;
     width: 200px;
-    height: 200px;
+    height: 100px;
     background-color: cyan;
     margin: 1rem;
     padding: 1rem;
@@ -65,7 +65,7 @@
     padding: 1rem;
     background-color: #c8c88b;
     overflow: auto;
-    height: 190px;
+    height: 250px;
 }
 .comments-section::-webkit-scrollbar{
     display: none;

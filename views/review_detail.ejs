@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/css/review_detail.css">
+<link rel="stylesheet" href="/css/media/media_review_detail.css">
 <%if(locals.user){%>
     <div id="review-detail-page-body-container">
 
@@ -14,7 +15,7 @@
             <%if(locals.user.isAdmin){%>
                 <div class="add_user_main_container">
                     <div>
-                        <a id="outer_link" class="outer-link" href="#">
+                        <a id="outer_link" class="outer-link" href="#add_user_form">
                             <div class="add-a-user">
                                 <p>Add a User</p>
                             </div>
@@ -37,7 +38,7 @@
                 </div>
             <%}%>
         <%}%>
-
+        
         <div class="comments-form-container">
             <div class="comment-form">
                 <%if(locals.user && review.reviewed_user._id != locals.user.id){%>
@@ -47,7 +48,6 @@
                     </form>
                 <%}%>
             </div>
-
         </div>
         <h2 style="text-align: center; margin-top: -1rem; padding: 1rem;">Comments</h2>
         <div id="comments">
