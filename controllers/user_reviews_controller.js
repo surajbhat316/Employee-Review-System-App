@@ -7,7 +7,6 @@ const Comment = require('../models/comment');
 // Get all the reviews for the logged in user where the user is being reviewed
 module.exports.getReviews = async function(req,res){
     try {
-        console.log(req.user.id);
         let reviewsAsAUser = await Review.find({reviewed_user : req.user.id})
                                                 .populate('reviewed_user', 'name email')
                                                 .populate('created_by_user', 'name email')
@@ -48,7 +47,6 @@ module.exports.getReviews = async function(req,res){
 
 
 // Show all the details for a particular Review
-
 module.exports.showDetails = async function(req,res){
     try {
         let review = await Review.findById(req.params.id)
@@ -69,6 +67,7 @@ module.exports.showDetails = async function(req,res){
     }
 }
 
+// To add a new comment
 module.exports.addComment = async function(req,res){
     try {
         let comment = await Comment.create({
@@ -79,6 +78,37 @@ module.exports.addComment = async function(req,res){
         return res.redirect('back');
     } catch (error) {
         console.log(error);
+        return res.redirect('back');
+    }
+}
+
+
+// Add an associated user
+module.exports.addAssociatedUser = async function(req,res){
+    try {
+        console.log(req.params);
+        console.log(req.user);
+        console.log(req.body);
+        let user = await User.findOne({email : req.body.email});
+        console.log(user);
+        if(!user){
+            console.log("User not found for the given email");
+            return res.redirect('back');
+        }
+        let review = await Review.findById(req.params.id);
+        if(review){
+            let associatedUsers = review.associated_users;
+            if(!associatedUsers.includes(user._id)){
+                associatedUsers.push(user._id);
+            }else{
+                console.log("Enters Else");
+            }
+            review.associated_users = associatedUsers;
+            review.save();
+        }
+        return res.redirect('back');
+    } catch (error) {
+        console.log("error ",error);
         return res.redirect('back');
     }
 }

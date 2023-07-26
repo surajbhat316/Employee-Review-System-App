@@ -1,16 +1,42 @@
-<h2>Review Drtails</h2>
+<link rel="stylesheet" href="/css/review_detail.css">
+<h2>Review Details</h2>
 
 <p>Title : <%= review.title%></p>
 <p>Created By : <%= review.created_by_user.name%></p>
 
+<%if(locals.user.isAdmin){%>
+    <div class="add_user_main_container">
+        <div>
+            <a id="outer_link" class="outer-link" href="#">
+                <div class="add-a-user">
+                    <p>Add a User</p>
+                </div>
+            </a>
+        </div>
+
+
+        <div style="display: none;" id="add_user_form" class="form-main-container">
+            <form action="/reviews/addUser/review/<%= review._id%>" method="post">
+                <div class="check-email-input">
+                    <input type="hidden" name="hiddenInp" id="hiddenInp" value="<%=review.reviewed_user.email%>" disabled>
+                    <input id="user_email" class="form-control" type="email" name="email" id="email" placeholder="User Email" required>
+                    <button id="check_user_btn" class="btn btn-secondary" type="button">Check User</button>
+                </div>
+                <span id="message"></span>
+                <button id="sunmit_button" type="submit" class="btn btn-primary m-2" disabled>Add</button>
+            </form>
+        </div>
+    </div>
+
+<%}%>
+
 
 <h2>Comments</h2>
-
 <%if(review.reviewed_user._id != locals.user.id){%>
-<form action="/reviews/detail/<%=review._id%>/addComment" method="post">
-    <textarea name="comment" id="comment" cols="30" rows="2" placeholder="Type a Comment" required></textarea><br>
-    <button class="btn btn-primary">Add Comment</button>
-</form>
+    <form action="/reviews/detail/<%=review._id%>/addComment" method="post">
+        <textarea name="comment" id="comment" cols="30" rows="2" placeholder="Type a Comment" required></textarea><br>
+        <button class="btn btn-primary">Add Comment</button>
+    </form>
 <%}%>
 <div class="comments-section">
     <%if(comments.length == 0){%>
@@ -26,3 +52,7 @@
     
 </div>
 
+
+
+
+<script src="/js/review_detail.js"></script>
