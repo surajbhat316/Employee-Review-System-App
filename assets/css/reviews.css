@@ -1,3 +1,7 @@
+.body-container{
+    margin-top: 1rem;
+    padding: 5rem 2rem;
+}
 .review-main-container{
     display: flex;
     flex-direction: row;

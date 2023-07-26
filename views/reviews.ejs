@@ -1,48 +1,11 @@
 <link rel="stylesheet" href="/css/reviews.css">
-<h2>Your Reviews</h2>
-<%if(reviewsAsAUser.length == 0){%>
-    <p>No Reviews found </p>
-<%} else {%>
-    <div class="review-main-container">
-        <%for(let review of reviewsAsAUser){%>
-            <div class="review-container">
-                <p>Title : <%=review.title%></p>
-                <p>Reviewed User : <%= review.reviewed_user.name%></p>
-                <p>Created By : <%=review.created_by_user.name%></p>
-                <a href="/reviews/detail/<%=review._id%>">View Details</a>
-            </div>
-            
-        <%}%>
-    </div>
-<%}%> 
-
-
-<h2>Reviews requiring your feedback </h2>
-<%if(reviewAsAnAssociatedUser.length == 0){%>
-    <p>No Reviews found </p>
-<%} else {%>
-    <div class="review-main-container">
-        <%for(let review of reviewAsAnAssociatedUser){%>
-            <div class="review-container">
-                <p>Title : <%=review.title%></p>
-                <p>Reviewed User : <%= review.reviewed_user.name%></p>
-                <p>Created By : <%=review.created_by_user.name%></p>
-                <a href="/reviews/detail/<%=review._id%>">View Details</a>
-            </div>
-            
-        <%}%>
-    </div>
-
-<%}%> 
-
-
-<%if(locals.user.isAdmin){%>
-    <h2>Reviews Created By You</h2>
-    <%if(reviewAsAnAdminUser.length == 0){%>
+<div class="body-container">
+    <h2>Your Reviews</h2>
+    <%if(reviewsAsAUser.length == 0){%>
         <p>No Reviews found </p>
     <%} else {%>
         <div class="review-main-container">
-            <%for(let review of reviewAsAnAdminUser){%>
+            <%for(let review of reviewsAsAUser){%>
                 <div class="review-container">
                     <p>Title : <%=review.title%></p>
                     <p>Reviewed User : <%= review.reviewed_user.name%></p>
@@ -52,6 +15,46 @@
                 
             <%}%>
         </div>
-    <%}%>  
-<%}%>
+    <%}%> 
+
+
+    <h2>Reviews requiring your feedback </h2>
+    <%if(reviewAsAnAssociatedUser.length == 0){%>
+        <p>No Reviews found </p>
+    <%} else {%>
+        <div class="review-main-container">
+            <%for(let review of reviewAsAnAssociatedUser){%>
+                <div class="review-container">
+                    <p>Title : <%=review.title%></p>
+                    <p>Reviewed User : <%= review.reviewed_user.name%></p>
+                    <p>Created By : <%=review.created_by_user.name%></p>
+                    <a href="/reviews/detail/<%=review._id%>">View Details</a>
+                </div>
+                
+            <%}%>
+        </div>
+
+    <%}%> 
+
+
+    <%if(locals.user.isAdmin){%>
+        <h2>Reviews Created By You</h2>
+        <%if(reviewAsAnAdminUser.length == 0){%>
+            <p>No Reviews found </p>
+        <%} else {%>
+            <div class="review-main-container">
+                <%for(let review of reviewAsAnAdminUser){%>
+                    <div class="review-container">
+                        <p>Title : <%=review.title%></p>
+                        <p>Reviewed User : <%= review.reviewed_user.name%></p>
+                        <p>Created By : <%=review.created_by_user.name%></p>
+                        <a href="/reviews/detail/<%=review._id%>">View Details</a>
+                    </div>
+                    
+                <%}%>
+            </div>
+        <%}%>  
+    <%}%>
+</div>
+
 

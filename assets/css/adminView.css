@@ -1,6 +1,10 @@
 body{
     height: 150vh;
 }
+.adminview-body-container{
+    margin-top: 3rem;
+    padding: 2rem 0rem;
+}
 .add-user{
     width: 200px;
     height: 200px;

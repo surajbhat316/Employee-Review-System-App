@@ -1,5 +1,20 @@
+
+#review-detail-page-body-container{
+    margin: 4rem 0rem;
+    padding: 0rem 3rem;
+}
+
+.review-details-container{
+    text-align: center;
+    background-color: cyan;
+    width: 100%;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
 .add_user_main_container{
     display: flex;
+    justify-content: center;
 }
 .outer-link{
     width: 200px;
@@ -30,3 +45,43 @@
 .check-email-input{
     display: flex;
 }
+
+
+.comments-form-container{
+    position: absolute;
+    bottom: 1.7rem;
+    border: 1px solid;
+    width: 90%;
+}
+
+.comments-form-container form{
+    display: flex;
+}
+.comments-section{
+    width: 70%;
+    border-radius: 1rem;
+    margin: auto;
+    margin-top: -1.8rem;
+    padding: 1rem;
+    background-color: #c8c88b;
+    overflow: auto;
+    height: 190px;
+}
+.comments-section::-webkit-scrollbar{
+    display: none;
+}
+.comment-content{
+    background-color: blanchedalmond;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 0.5rem;
+    margin: 1rem;
+}
+
+.comment-content p{
+    margin: -0.2rem
+}
+
