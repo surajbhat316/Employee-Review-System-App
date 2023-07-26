@@ -16,3 +16,15 @@
     box-shadow: 0px 0px 19px 0px lightgrey;
     border-radius: 1rem;
 }
+.review-container a{
+    text-decoration: none;
+    margin: auto;
+}
+
+.review-container-info{
+    background-color: #4d4d73;
+    color: white; 
+    border: 1px solid white; 
+    padding: 1rem; 
+    border-radius: 1rem;
+}
