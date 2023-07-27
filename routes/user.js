@@ -5,7 +5,7 @@ const passport = require('passport');
 const usersController = require('../controllers/users_controller');
 
 
-
+// Route for admin view
 router.use('/admin', require('./admin'));
 
 // To Check if the email of the user is valid
