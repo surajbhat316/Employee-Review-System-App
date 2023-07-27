@@ -1,8 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
 const path = require('path');
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const db = require('./config/mongoose');
 // Used for session cookie
 const session = require('express-session');
@@ -32,14 +33,15 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(session({
     name: 'employeeApp',
-    secret: 'blahsomething',
+    secret: process.env.SECRET,
     saveUninitialized: false,
     resave: false,
     cookie: {
         maxAge: (1000 * 60 * 100)
     },
     store: MongoStore.create({
-            mongoUrl:'mongodb://127.0.0.1:27017/employee_review_system' ,
+            // mongoUrl:'mongodb://127.0.0.1:27017/employee_review_system' ,
+            mongoUrl: process.env.MONGO_URL,
             autoRemove: 'disabled' 
     },
     function(err){
