@@ -15,7 +15,7 @@
         <div class="links-container">
             <div class="links">
                 <%if(locals.user){%>
-                    <span><%= user.name%></span>
+                    <a href="/user/profile"><span><%= user.name%></span></a>
                     <a href="/user/sign-out">Sign Out</a>
                 <%}else{%>
                     <a href="/user/sign-in">Sign-in</a>

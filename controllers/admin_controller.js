@@ -23,14 +23,12 @@ module.exports.create = async function(req,res){
             return res.redirect('back');
         }
         else{
-            console.log("User Already exists with this email id. Use a different email");
             req.flash('error','User exists with this email');
             return res.redirect('back');
         }
     }
     catch(err){
         req.flash('error','Error in finding the user');
-        console.log("Error in finding the user", err);
         return res.redirect('back');
     }
     
@@ -68,7 +66,6 @@ module.exports.searchByEmail = async function(req,res){
 }
 
 module.exports.update = async function (req, res){
-    let count = 0;
     if(req.body.isAdmin == "on"){
         req.body.isAdmin = true;
     }
@@ -87,7 +84,6 @@ module.exports.update = async function (req, res){
             return res.redirect('back');
         }
         else{
-            console.log("User not found");
             req.flash('error','User not found');
             return res.redirect('back');
         }
@@ -108,7 +104,6 @@ module.exports.delete = async function(req, res) {
             return res.redirect('/user/adminView');
         }
         else{
-            console.log("User not found");
             req.flash('error','User not found');
             return res.redirect('/user/adminView');
         }

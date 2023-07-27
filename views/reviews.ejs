@@ -9,9 +9,9 @@
             <%for(let review of reviewsAsAUser){%>
                 <div class="review-container">
                     <div class="review-container-info">
-                        <p>Title : <%=review.title%></p>
-                        <p>Reviewed User : <%= review.reviewed_user.name%></p>
-                        <p>Created By : <%=review.created_by_user.name%></p>
+                        <p><b>Title</b> : <%=review.title%></p>
+                        <p><b>Reviewed User</b> : <%= review.reviewed_user.name%></p>
+                        <p><b>Created By</b> : <%=review.created_by_user.name%></p>
                     </div>
                     <a href="/reviews/detail/<%=review._id%>">View Details</a>
                 </div>
@@ -29,9 +29,9 @@
             <%for(let review of reviewAsAnAssociatedUser){%>
                 <div class="review-container">
                     <div class="review-container-info">
-                        <p>Title : <%=review.title%></p>
-                        <p>Reviewed User : <%= review.reviewed_user.name%></p>
-                        <p>Created By : <%=review.created_by_user.name%></p>
+                        <p><b>Title</b> : <%=review.title%></p>
+                        <p><b>Reviewed User</b> : <%= review.reviewed_user.name%></p>
+                        <p><b>Created By</b> : <%=review.created_by_user.name%></p>
                     </div>
                     <a href="/reviews/detail/<%=review._id%>">View Details</a>
                 </div>
@@ -51,9 +51,9 @@
                 <%for(let review of reviewAsAnAdminUser){%>
                     <div class="review-container">
                         <div class="review-container-info">
-                            <p>Title : <%=review.title%></p>
-                            <p>Reviewed User : <%= review.reviewed_user.name%></p>
-                            <p>Created By : <%=review.created_by_user.name%></p>
+                            <p><b>Title</b> : <%=review.title%></p>
+                            <p><b>Reviewed User</b> : <%= review.reviewed_user.name%></p>
+                            <p><b>Created By</b> : <%=review.created_by_user.name%></p>
                         </div>
                         <a href="/reviews/detail/<%=review._id%>">View Details</a>
                     </div>

@@ -21,12 +21,10 @@ module.exports.create = async function(req, res) {
             return res.redirect('back');
 
         }else{
-            console.log("User Not found With the requested email address");
             req.flash('error','User not found With the requested email address');
             return res.redirect('back');
         }
     } catch (error) {
-        console.log("Error: " + error);
         req.flash('error',error);
         return res.redirect('back');
     }

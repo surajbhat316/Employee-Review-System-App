@@ -30,10 +30,6 @@ module.exports.getReviews = async function(req,res){
         .populate('associated_users', 'name email')
         .exec();   
 
-        console.log(reviewsAsAUser);
-        console.log(reviewAsAnAssociatedUser);
-        console.log(reviewAsAnAdminUser);
-
         return res.render('reviews', {
             reviewsAsAUser : reviewsAsAUser,
             reviewAsAnAssociatedUser : reviewAsAnAssociatedUser,
@@ -79,7 +75,6 @@ module.exports.addComment = async function(req,res){
         return res.redirect('back');
     } catch (error) {
         req.flash('error', error);
-        console.log(error);
         return res.redirect('back');
     }
 }
@@ -88,14 +83,9 @@ module.exports.addComment = async function(req,res){
 // Add an associated user
 module.exports.addAssociatedUser = async function(req,res){
     try {
-        // console.log(req.params);
-        // console.log(req.user);
-        // console.log(req.body);
         let user = await User.findOne({email : req.body.email});
-        // console.log(user);
         if(!user){
             req.flash('error','User not found With the requested email address');
-            console.log("User not found for the given email");
             return res.redirect('back');
         }
         let review = await Review.findById(req.params.id);
@@ -105,7 +95,6 @@ module.exports.addAssociatedUser = async function(req,res){
                 associatedUsers.push(user._id);
                 req.flash('success','User added to Review');
             }else{
-                console.log("Enters Else");
                 req.flash('error','User already present in Review');
             }
             review.associated_users = associatedUsers;
@@ -114,7 +103,6 @@ module.exports.addAssociatedUser = async function(req,res){
         return res.redirect('back');
     } catch (error) {
         req.flash('error',error);
-        console.log("error ",error);
         return res.redirect('back');
     }
 }

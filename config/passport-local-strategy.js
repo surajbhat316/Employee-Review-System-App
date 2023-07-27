@@ -17,7 +17,6 @@ passport.use( new LocalStrategy({
                 return done(null, user);
             }
         } catch (error) {
-            console.log("error in finding user", error);
             req.flash('error',error);
             return done(error);
         }
@@ -38,7 +37,6 @@ passport.deserializeUser(async function(id, done){
         let user = await User.findById(id);
         return done(null, user);
     } catch (error) {
-        console.log("error in finding user", error);
         return done(error);
     }
 });

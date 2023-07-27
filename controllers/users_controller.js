@@ -29,7 +29,6 @@ module.exports.checkIfUserExists = async function(req,res){
         }
         
     } catch (error) {
-        console.log("Error in finding the user ",error);
         return res.redirect('back');
     }
 }
@@ -53,6 +52,7 @@ module.exports.signup = function(req,res){
 
 module.exports.create = async function(req,res){
     if(req.body.password != req.body.confirm_password){
+        req.flash('error','Make sure that the password and confirm_password match.');
         return res.redirect('back');
     }
     if(req.body.isAdmin == undefined){
@@ -69,17 +69,17 @@ module.exports.create = async function(req,res){
                 email: req.body.email,
                 password: req.body.password,
                 isAdmin: req.body.isAdmin
-            })
-
+            });
+            req.flash('success','Account created successfully');
             return res.redirect('/user/sign-in');
         }
         else{
-            console.log("User Already exists with this email id");
+            req.flash('error','User already exists with this email id');
             return res.redirect('back');
         }
     }
     catch(err){
-        console.log("Error in finding the user", err);
+        req.flash('error',err);
         return res.redirect('back');
     }
     
@@ -99,7 +99,6 @@ module.exports.showProfile = async function(req,res){
 module.exports.destroySession = async function(req,res,next){
     req.logout(function(err){
         if(err){
-            console.log("Error "+ err);
             return next(err);
         }
         req.flash('success','You have Logged Out');
@@ -111,7 +110,7 @@ module.exports.destroySession = async function(req,res,next){
 
 module.exports.adminView = function(req, res){
 
-    if(req.user.isAdmin){
+    if(req.user && req.user.isAdmin){
         return res.render('adminView',{
             users : []
         });
