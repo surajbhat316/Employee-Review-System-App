@@ -17,14 +17,17 @@ module.exports.create = async function(req, res) {
                 reviewed_user: user.id,
                 created_by_user: req.user._id
             });
+            req.flash('success','Review created successfully');
             return res.redirect('back');
 
         }else{
             console.log("User Not found With the requested email address");
+            req.flash('error','User not found With the requested email address');
             return res.redirect('back');
         }
     } catch (error) {
         console.log("Error: " + error);
+        req.flash('error',error);
         return res.redirect('back');
     }
 }

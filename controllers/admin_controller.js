@@ -1,6 +1,7 @@
 const User = require('../models/user');
 module.exports.create = async function(req,res){
     if(req.body.password != req.body.confirm_password){
+        req.flash('error','Make sure that the password and confirm_password match');
         return res.redirect('back');
     }
     if(req.body.isAdmin == undefined){
@@ -18,15 +19,17 @@ module.exports.create = async function(req,res){
                 password: req.body.password,
                 isAdmin: req.body.isAdmin
             })
-
+            req.flash('success','User Created successfully');
             return res.redirect('back');
         }
         else{
-            console.log("User Already exists with this email id");
+            console.log("User Already exists with this email id. Use a different email");
+            req.flash('error','User exists with this email');
             return res.redirect('back');
         }
     }
     catch(err){
+        req.flash('error','Error in finding the user');
         console.log("Error in finding the user", err);
         return res.redirect('back');
     }
@@ -65,6 +68,7 @@ module.exports.searchByEmail = async function(req,res){
 }
 
 module.exports.update = async function (req, res){
+    let count = 0;
     if(req.body.isAdmin == "on"){
         req.body.isAdmin = true;
     }
@@ -79,14 +83,17 @@ module.exports.update = async function (req, res){
             user.name = req.body.name;
             user.isAdmin = req.body.isAdmin;
             user.save();
+            req.flash('success','User Updated successfully');
             return res.redirect('back');
         }
         else{
             console.log("User not found");
+            req.flash('error','User not found');
             return res.redirect('back');
         }
         
     } catch (error) {
+        req.flash('error','Error in finding the user');
         return res.redirect('back');
     }
 }
@@ -97,13 +104,16 @@ module.exports.delete = async function(req, res) {
         let user = await User.findOne({_id : req.params.id});
         if(user){
             await User.findByIdAndRemove({_id : req.params.id});
+            req.flash('success','User deleted successfully');
             return res.redirect('/user/adminView');
         }
         else{
             console.log("User not found");
+            req.flash('error','User not found');
             return res.redirect('/user/adminView');
         }
     } catch (error) {
+        req.flash('error', error);
         return res.redirect('/user/adminView');
     }
 }

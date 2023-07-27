@@ -75,8 +75,10 @@ module.exports.addComment = async function(req,res){
             review_id: req.params.id,
             user_id: req.user.id
         });
+        req.flash('success','Comment added successfully');
         return res.redirect('back');
     } catch (error) {
+        req.flash('error', error);
         console.log(error);
         return res.redirect('back');
     }
@@ -92,6 +94,7 @@ module.exports.addAssociatedUser = async function(req,res){
         let user = await User.findOne({email : req.body.email});
         // console.log(user);
         if(!user){
+            req.flash('error','User not found With the requested email address');
             console.log("User not found for the given email");
             return res.redirect('back');
         }
@@ -100,14 +103,17 @@ module.exports.addAssociatedUser = async function(req,res){
             let associatedUsers = review.associated_users;
             if(!associatedUsers.includes(user._id)){
                 associatedUsers.push(user._id);
+                req.flash('success','User added to Review');
             }else{
                 console.log("Enters Else");
+                req.flash('error','User already present in Review');
             }
             review.associated_users = associatedUsers;
             review.save();
         }
         return res.redirect('back');
     } catch (error) {
+        req.flash('error',error);
         console.log("error ",error);
         return res.redirect('back');
     }
